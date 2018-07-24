@@ -1,0 +1,88 @@
+1. 请找出一个Customer身份登录Trader时可以看到的Instruments
+
+SELECT  AccountCode=a.Code, i.ID AS InstrumentID2, InstrumentCode=i.Code FROM Account AS a 
+INNER JOIN Customer AS c ON c.ID = a.CustomerID 
+INNER JOIN TradePolicy AS Tp ON Tp.ID = a.TradePolicyID 
+INNER JOIN TradePolicyDetail AS Tpd ON Tpd.TradePolicyID = Tp.ID 
+INNER JOIN Instrument AS i ON i.ID = Tpd.InstrumentID 
+ WHERE  c.ID = '103972CB-29E1-4C08-AE07-28627A8A22E5'
+
+2. 请找出一个Employee身份登录Trader时可以看到的Instruments
+
+select distinct e.Code,InstrumentCode=i.Code from Employee e 
+inner Join Account a on a.SalesID=e .ID 
+INNER JOIN TradePolicy AS Tp ON Tp.ID = a.TradePolicyID 
+INNER JOIN TradePolicyDetail AS Tpd ON Tpd.TradePolicyID = Tp.ID 
+INNER JOIN Instrument AS i ON i.ID = Tpd.InstrumentID 
+ where e.ID  ='C0C85AA5-32A7-4FEB-9C5C-5D58C6FF8894'
+
+
+3. 请找出一个Customer所对应的QuotePolicy
+
+select CustomerCode=c.Code , QuotePolicyCode=Qp .Code from Customer  c
+inner join QuotePolicy Qp on Qp .ID=c .PrivateQuotePolicyID
+where c .ID ='245B6703-BFC1-47D1-822A-F11A8727EF3A'
+
+
+3. 请找出一个Customer所对应某个Instrument所对应的QuotePolicyID
+
+SELECT CustomerCode=c.Code , QuotePolicyID=Qp.ID ,
+ AccountCode=a.Code, i.ID AS InstrumentID2,
+ InstrumentCode=i.Code  FROM Account AS a 
+INNER JOIN Customer AS c ON c.ID = a.CustomerID 
+INNER JOIN TradePolicy AS Tp ON Tp.ID = a.TradePolicyID 
+INNER JOIN TradePolicyDetail AS Tpd ON Tpd.TradePolicyID = Tp.ID 
+INNER JOIN Instrument AS i ON i.ID = Tpd.InstrumentID 
+INNER JOIN QuotePolicy Qp on Qp .ID=c .PrivateQuotePolicyID
+ WHERE  c.ID = '103972CB-29E1-4C08-AE07-28627A8A22E5'
+  and i .ID ='2E42C798-97E7-4702-AFBA-0E6ABA0575D6'
+
+4. 请找出一个Account能操作Instruments
+
+
+select  distinct AccountCode=a.Code,instrumentCode=i.Code  from Account a 
+Inner Join  TradePolicy Tp on Tp.ID=a .TradePolicyID 
+Inner Join TradePolicyDetail  Tpd on Tpd.TradePolicyID =Tp .ID 
+Inner Join Instrument  i on i.ID =Tpd .InstrumentID 
+where  a.Code ='Sunny03'
+
+
+5、请查询acount所在的组
+
+select g.code, a.code,a.id,gm.MemberID,g.grouptype,* from [group] g inner join 
+GroupMembership gm on gm.Groupid=g.id
+inner join account a on a.id=gm.Memberid
+where grouptype='Account' and a.code='no001'
+
+6、请查询某个个账号对应某个instrument的开仓单子的利息，仓租
+select a.code,i.code,odh.InterestPLValued,odh.StoragePLValued,odh.DayClosePrice,* from orderdayhistory odh 
+inner join [order] o on odh.orderid=o.id
+inner join account a on a.id=o.accountid
+inner join instrument i on o.instrumentid=i.id
+where a.code='bvi001'
+order by tradeday desc
+
+
+
+7、查询account对应的单子信息
+ 1、旧版表
+select o.id,t=o.submittime,o.executetime,* from [order] o inner 
+join account a on a.id=o.accountid
+where a.code='tpdh001'
+order by submittime desc
+2、新版表
+select o.id,t=t.submittime,t.executetime,* from trading.[order] o
+inner join trading.[Transaction] t
+on t.id=o.transactionid
+inner join account a
+on a.id=t.accountid
+where a.code='tpdh001'
+order by t.submittime desc
+
+
+
+
+
+
+
+

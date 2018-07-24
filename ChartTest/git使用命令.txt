@@ -1,0 +1,35 @@
+mkdir learngit 创建目录learngit
+cd learngit 切换到learngit目录
+pwd 显示目录位置
+
+git init把创建的目录变成一个仓库，会多一个.git的隐藏目录
+ls -ah可以查看这个目录
+git add readme.txt 用命令git add告诉Git，把文件添加到仓库暂存区
+用命令git commit告诉Git，把文件提交到仓库： 提交到仓库
+简单解释一下git commit命令，-m后面输入的是本次提交的说明，可以输入任意内容，当然最好是有意义的，这样你就能从历史记录里方便地找到改动记录。
+
+git log git log命令显示从最近到最远的提交日志，我们可以看到3次提交，如果嫌输出信息太多，看得眼花缭乱的，可以试试加上--pretty=oneline参数：
+git reset --hard HEAD^表示提交的上一个版本
+git reset --hard HEAD^^表示提交的上上一个版本
+
+git reset --hard 1094a 回到下一个版本
+
+Git提供了一个命令git reflog用来记录你的每一次命令：git l
+
+git checkout -- file撤销修改，还没有放到暂存区的修改撤销
+
+用命令git reset HEAD <file>可以把暂存区的修改撤销掉（unstage），重新放回工作区：然后通过
+git checkout -- file撤销工作区修改
+
+
+…or create a new repository on the command line
+echo "# amyDocument" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/amy925/amyDocument.git
+git push -u origin master 本地仓库上传到github远程仓库
+
+
+git remote add origin https://github.com/amy925/amyDocument.git
+git push -u origin master
