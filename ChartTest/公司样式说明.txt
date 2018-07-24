@@ -1,0 +1,24 @@
+永丰production dem
+默认白底，打开exe默认连接是真实，导航栏颜色QWidget#TraderToolBar
+{
+        background: #00a750;
+}  按钮是图标
+
+
+GDx,slt要白底，导航栏背景色不一样
+
+
+其他公司默认黑底
+
+EnableSystemPictureButton=true 表示按钮为图标
+ContainsMilSInQuotationTime=false 表示价格时间显示
+配置里面一定要加organizationcode,避免以后升级失败
+打包前清除用户登录信息，包括user,dmp,log,login
+
+instrument颜色样式：在WhiteViewItemColor，blackViewItemColor 里面底部增加 
+<Item key="OutlineLabel_FillColor" value="#f0f000"/>
+<Item key="OutlineLabel_StrokeColor" value="#4b4a49"/>
+
+ys,wf，配置文件默认真实账户
+
+sequence

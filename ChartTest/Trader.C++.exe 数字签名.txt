@@ -1,0 +1,18 @@
+证书管理器: certmgr.msc
+
+操作步骤------------------------------------------
+
+1、插入USB Key，安装驱动
+2、安装Z:\Tools\SafeNet目录下程序
+3、插入USB Key，安装驱动
+--------若安装过，直接执行下面步骤
+4. cd  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin
+5. SignTool sign /t http://timestamp.digicert.com /a "D:\TraderDeploy\Release\Trader.exe"
+D:\TraderDeploy\Release\AutoUpdate\AutoUpdateClient.exe
+D:\TraderDeploy\Release\OmnicareTraderExternal.exe
+E:\TraderOutput\Release\Single\Lucky StarSetup.exe
+注意："E:\Trader\Trader.exe"为需要签名的文件的路径
+
+6.密码：Omni1234
+
+如果没有弹出输入密码窗口则需要进入certmgr.msc ，Personal\Certificates 手动删除MyServer证书即可，再次执行3点的命令就会弹出窗口

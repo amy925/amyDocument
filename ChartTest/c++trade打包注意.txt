@@ -1,0 +1,47 @@
+1、一般公司发布都是用denny目录最新的，如果最新的不匹配那就会让denny根据发布版本打一个出来
+2、LOG，公司名等敏感信息，包名不能出错,log,user，pdp文件 这些登录信息全部删除
+3、D:\TraderDeploy\Release\AutoUpdate\AutoUpdateSetting.json 里面的organization必须与该值在ManagerConsole\AutoUpdateService 中配置设置SLT=SLT_UpdateFilePath一致
+4、D:\TraderDeploy\Release\Resources\Image目录下的图片替换
+Login.png：该图为C++登陆界面图片 128*128
+logo.png：该图大小为32*32
+App.png: 该图大小为128*128
+图片可在Z:\Common\SwapFiles\AMY\C++公司打包 中根据对应公司获取
+5、D:\TraderDeploy\Release\Resources\ToolBar 替换logo.png
+6、D:\TraderDeploy\Release\Resources\LoginConfig 根据公司替换不同地址
+7、 替换D:\InstallA\中的 ico类型文件
+D:\InstallA\Icon  TraderOmnicare.ico 128*128
+D:\InstallA\TraderD   icon.ico 128*128
+图片可在Z:\Common\SwapFiles\AMY\C++公司打包 中根据对应公司获取
+
+8、注意1、公司铭感信息，2公司图片，3公司配置，4，默认黑底 
+5、language 永丰有特殊的languageZ:\Common\SwapFiles\Lily\永丰\C++ language\Language  其他公司的都一样
+
+证书管理器: certmgr.msc
+
+操作步骤------------------------------------------
+
+1、插入USB Key，安装驱动
+2、安装Z:\Tools\SafeNet目录下程序
+3、插入USB Key，安装驱动
+--------若安装过，直接执行下面步骤
+4. cd  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin
+5. SignTool sign /t http://timestamp.digicert.com /a "E:\TraderOutput\Release\Single\JTV4Setup.exe"
+
+注意："E:\Trader\Trader.exe"为需要签名的文件的路径
+
+6.密码：Omni1234
+
+如果没有弹出输入密码窗口则需要进入certmgr.msc ，Personal\Certificates 手动删除MyServer证书即可，再次执行3点的命令就会弹出窗口
+
+----------------------------------------------------------------------------------------------------
+v3的发布用debug版本发布 stateserver里面的protocal,common用debug
+v3的发布需要对js加密
+D:\Team\OtherCollection\Test Team\Documents\Documents\打包V3比较工具这个两次发布版本进行比较，得出更新到外面的版本
+E:\Program Files (x86)\TinyMS\JsCompressor\bin  js加密工具
+5>压缩&混淆完所有相关.js文件后，重命名js文件名，拷贝D:\Teams\OtherCollection\Test Team\Documents\Documents\JsCompressor-v3.0\rename.bat到E:\Temp\V3Publish文件夹下，打开修改里面的路径，在这里，只需保证是这样的路径即可：set /p folder=E:\Temp\V3Publish\BackOffice\JavaScript:，双击E:\Temp\V3Publish\rename.bat,将会弹出cmd窗口，按回车键即可
+
+Z:\Common\SwapFiles\Michael\V3Doc\发布流程\DelConfig.bat 删除配置文件
+
+
+
+服务器端发布，Tradeservice,tradequotationservice,systemcontroll,transactionservice 用realase版本发布common，protocal
