@@ -33,3 +33,14 @@ git push -u origin master 本地仓库上传到github远程仓库
 
 git remote add origin https://github.com/amy925/amyDocument.git
 git push -u origin master
+
+ssh-keygen -t rsa -c "1269773859@qq.com"
+
+克隆一个本地库
+现在，远程库已经准备好了，下一步是用命令git clone克隆一个本地库：相当于下载
+
+$ git clone https://github.com/amy925/amyDocument.git 仓库地址
+Cloning into 'gitskills'...
+remote: Counting objects: 3, done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 3
+Receiving objects: 100% (3/3), done.
